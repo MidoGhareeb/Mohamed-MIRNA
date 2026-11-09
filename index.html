@@ -1,0 +1,302 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#faf8fd">
+  <title>محمد و ميرنا — دعوة زفاف</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <canvas id="particles" aria-hidden="true"></canvas>
+  <div class="ambient-glow" aria-hidden="true"></div>
+
+  <div class="intro-screen" id="introScreen">
+    <div class="intro-content">
+
+      <button class="envelope-open" id="openInvitation" aria-label="افتح الدعوة" type="button">
+
+        <span class="envelope-shadow"></span>
+
+        <span class="envelope-letter">
+          <span class="letter-ornament">❦</span>
+          <span class="letter-line"></span>
+          <span class="letter-small">Wedding Invitation</span>
+          <span class="letter-line"></span>
+        </span>
+
+        <span class="envelope-back"></span>
+        <span class="envelope-front"></span>
+        <span class="envelope-flap"></span>
+
+        <span class="envelope-seal">♥</span>
+
+      </button>
+
+      <h1 class="intro-names" id="introNames">محمد و ميرنا</h1>
+
+      <p class="intro-caption"
+         data-ar="دعوة زفاف"
+         data-en="Wedding Invitation">
+        دعوة زفاف
+      </p>
+
+      <button class="intro-hint" id="introHint"
+              data-ar="— اضغط لفتح الدعوة —"
+              data-en="— Tap to open invitation —">
+        — اضغط لفتح الدعوة —
+      </button>
+
+    </div>
+  </div>
+
+  <button class="language-toggle" id="languageToggle" type="button">
+    GB English
+  </button>
+
+  <button class="music-toggle" id="musicToggle" type="button"
+          aria-label="تشغيل الموسيقى" title="الموسيقى">
+    <span class="music-note">♫</span>
+  </button>
+
+  <audio autoplay id="backgroundMusic" loop preload="none"
+         src="/song.mp3"></audio>
+
+  <main id="invitation" class="invitation is-locked">
+
+    <section class="hero section reveal">
+
+      <p class="bismillah"
+         data-ar="بسم الله الرحمن الرحيم"
+         data-en="In the name of Allah, the Most Merciful">
+        بسم الله الرحمن الرحيم
+      </p>
+
+      <p class="poem"
+         data-ar="جمع القدر قلبين على الوفا<br>فازدان دربهما بالحب والصفا"
+         data-en="Two hearts were brought together by fate<br>and their journey blossomed with love">
+        جمع القدر قلبين على الوفا<br>
+        فازدان دربهما بالحب والصفا
+      </p>
+
+      <div class="gold-divider"></div>
+
+      <h1 class="couple-names">
+        <span id="groomName">محمد</span>
+        <span class="ampersand">و</span>
+        <span id="brideName">ميرنا</span>
+      </h1>
+
+      <p class="date-line" id="heroDate">
+        الجمعة 11 ديسمبر ٢٠٢٦
+      </p>
+
+      <p class="invite-copy"
+         data-ar="يسعدنا ويشرفنا حضوركم حفل زفافنا<br>وتكونوا سعداء بمشاركتكم أجمل لحظات حياتنا"
+         data-en="It would make us happy and honored to have you<br>share the most beautiful moments of our lives">
+        يسعدنا ويشرفنا حضوركم حفل زفافنا<br>
+        وتكونوا سعداء بمشاركتكم أجمل لحظات حياتنا
+      </p>
+
+    </section>
+
+    <section class="countdown-section section reveal">
+
+      <h2 data-ar="باقي على الفرحة" data-en="Until the Big Day">
+        باقي على الفرحة
+      </h2>
+
+      <p class="section-subtitle"
+         data-ar="العد التنازلي حتى موعد حفل الزفاف"
+         data-en="Countdown to our wedding day">
+        العد التنازلي حتى موعد حفل الزفاف
+      </p>
+
+      <div class="countdown" aria-live="polite">
+
+        <div class="time-unit">
+          <strong id="days">00</strong>
+          <span data-ar="يوم" data-en="Days">يوم</span>
+        </div>
+
+        <div class="time-unit">
+          <strong id="hours">00</strong>
+          <span data-ar="ساعة" data-en="Hours">ساعة</span>
+        </div>
+
+        <div class="time-unit">
+          <strong id="minutes">00</strong>
+          <span data-ar="دقيقة" data-en="Minutes">دقيقة</span>
+        </div>
+
+        <div class="time-unit">
+          <strong id="seconds">00</strong>
+          <span data-ar="ثانية" data-en="Seconds">ثانية</span>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="details-section section reveal">
+
+      <h2 data-ar="تفاصيل الفرح" data-en="Wedding Details">
+        تفاصيل الفرح
+      </h2>
+
+      <p class="section-subtitle"
+         data-ar="يسعدنا وجودكم ومشاركتكم فرحتنا"
+         data-en="We can't wait to celebrate with you">
+        يسعدنا وجودكم ومشاركتكم فرحتنا
+      </p>
+
+      <div class="detail-grid">
+
+        <article class="detail-card">
+
+          <span class="detail-symbol">✧</span>
+
+          <h3 data-ar="مكان الحفل" data-en="Venue">
+            مكان الحفل
+          </h3>
+
+          <p class="detail-main" id="venueName">قاعة مريال ب</p>
+
+          <p class="detail-meta" id="eventTime">الساعة ٨ مساءً</p>
+
+          <a class="gold-button" id="mapLink"
+             href="https://maps.google.com/"
+             target="_blank" rel="noopener"
+             data-ar="عرض الموقع على الخريطة"
+             data-en="View on Google Maps">
+            عرض الموقع على الخريطة
+          </a>
+
+        </article>
+
+        <article class="detail-card">
+
+          <span class="detail-symbol">✧</span>
+
+          <h3 data-ar="موعدنا" data-en="Save the Date">
+            موعدنا
+          </h3>
+
+          <p class="detail-main" id="detailDate">
+            الجمعة 11 ديسمبر ٢٠٢٦
+          </p>
+
+          <p class="detail-meta"
+             data-ar="ننتظركم لنحتفل معًا"
+             data-en="Join us for the celebration">
+            ننتظركم لنحتفل معًا
+          </p>
+
+          <button class="gold-button" id="calendarButton"
+                  data-ar="أضف إلى التقويم"
+                  data-en="Add to Calendar">
+            أضف إلى التقويم
+          </button>
+
+        </article>
+
+      </div>
+    </section>
+
+    <section class="gallery-section section reveal">
+
+      <h2 data-ar="دعوة من القلب" data-en="A Personal Invitation">
+        دعوة من القلب
+      </h2>
+
+      <p class="section-subtitle"
+         data-ar="نتمنى أن تشاركونا هذه اللحظة الجميلة"
+         data-en="We hope you can be part of our special day">
+        نتمنى أن تشاركونا هذه اللحظة الجميلة
+      </p>
+
+      <div class="gallery">
+
+        <figure class="gallery-photo photo-one">
+          <img id="galleryImage1"
+               src="/7A2A46034368.JPG"
+               alt="صورة من أجواء الزفاف">
+        </figure>
+
+        <figure class="gallery-photo photo-two">
+          <img id="galleryImage2"
+               src="/7A2A46064371.JPG"
+               alt="صورة من أجواء الزفاف">
+        </figure>
+
+      </div>
+    </section>
+
+    <section class="guestbook-section section reveal">
+
+      <h2 data-ar="اتركوا لنا تهنئة جميلة"
+          data-en="Send Us Your Wishes">
+        اتركوا لنا تهنئة جميلة
+      </h2>
+
+      <p class="section-subtitle"
+         data-ar="كلماتكم ودعواتكم هتفضل ذكرى جميلة معانا"
+         data-en="Your kind words and prayers will mean a lot to us">
+        كلماتكم ودعواتكم هتفضل ذكرى جميلة معانا
+      </p>
+
+      <form id="messageForm" class="message-form">
+
+        <input id="guestName" type="text"
+               placeholder="اسمك"
+               aria-label="اسمك" required>
+
+        <textarea id="guestMessage"
+                  placeholder="اكتب تهنئتك هنا..."
+                  aria-label="رسالتك"
+                  rows="3" required></textarea>
+
+        <button class="gold-button submit-button"
+                type="submit"
+                data-ar="إرسال التهنئة"
+                data-en="Send Wishes">
+          إرسال التهنئة
+        </button>
+
+      </form>
+
+      <p class="success-message" id="successMessage" hidden>
+        🤍 شكرًا لمشاركتكم فرحتنا
+      </p>
+
+    </section>
+
+    <footer class="footer reveal">
+
+      <div class="gold-divider"></div>
+
+      <p class="footer-names" id="footerNames">
+        محمد و ميرنا
+      </p>
+
+      <p data-ar="وبالحب نبدأ حكاية العمر"
+         data-en="And so our forever begins">
+        وبالحب نبدأ حكاية العمر
+      </p>
+
+    </footer>
+
+  </main>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
